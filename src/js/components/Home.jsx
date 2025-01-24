@@ -1,28 +1,30 @@
 import React from "react";
+import SecondsCounter from "./SecondsCounter";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+let seconds = 0; // Initialize the seconds counter
 
-//create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-            
+class Home extends React.Component {
+  componentDidMount() {
+    // Start the timer when the component is mounted
+    this.interval = setInterval(() => {
+      this.forceUpdate(); // Force a re-render to update the counter
+      seconds++;
+    }, 1000);
+  }
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
-};
+  componentWillUnmount() {
+    // Clear the timer when the component is unmounted
+    clearInterval(this.interval);
+  }
+
+  render() {
+    return (
+      <div>
+        {/* Pass the seconds as a prop to SecondsCounter */}
+        <SecondsCounter seconds={seconds} />
+      </div>
+    );
+  }
+}
 
 export default Home;

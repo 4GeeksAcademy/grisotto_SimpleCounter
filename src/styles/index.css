@@ -1,11 +1,47 @@
-/* 
-
-    You can write your own styles here...
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .counter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black; /* Black background for the counter box */
+    padding: 20px; /* Add padding inside the black box */
+    border-radius: 10px; /* Rounded corners for the black box */
     
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+  }
+  
+  .clock-icon {
+    margin-right: 20px;
+    font-size: 50px;
+    width: 60px;
+    height: 90px;
+    background: rgb(41, 39, 39);
+    color: white;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .digit-box {
+    width: 60px;
+    height: 90px;
+    background: rgb(41, 39, 39);
+    color: white;    
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-family: monospace;
+  }
+  
