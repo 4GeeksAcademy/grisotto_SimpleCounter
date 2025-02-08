@@ -1,30 +1,29 @@
 import React from "react";
-import SecondsCounter from "./SecondsCounter";
 
-let seconds = 0; // Initialize the seconds counter
+const Home = (props) => {
+  return (
+    <div className="bigCounter mx-auto" > 
 
-class Home extends React.Component {
-  componentDidMount() {
-    // Start the timer when the component is mounted
-    this.interval = setInterval(() => {
-      this.forceUpdate(); // Force a re-render to update the counter
-      seconds++;
-    }, 1000);
-  }
-
-  componentWillUnmount() {
-    // Clear the timer when the component is unmounted
-    clearInterval(this.interval);
-  }
-
-  render() {
-    return (
-      <div>
-        {/* Pass the seconds as a prop to SecondsCounter */}
-        <SecondsCounter seconds={seconds} />
+      <div className= "calendar"> 
+          <i className="fa-regular fa-clock fa"> 
+          </i>
       </div>
-    );
-  }
-}
+      <div className="fourthDigit">
+        {Math.floor(props.seconds/10000) % 10}
+      </div>
+      <div className="thirdDigit">
+        {Math.floor(props.seconds/1000) % 10}
+      </div>
+      <div className="secondDigit">
+        {Math.floor(props.seconds/100) % 10}
+      </div>
+      <div className="firstDigit">
+        {Math.floor(props.seconds/10) % 10}
+      </div>
+
+    </div>
+  );
+
+};
 
 export default Home;

@@ -1,13 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import Home from "./components/Home"; // Correct relative path to Home.jsx
 import "../styles/index.css"; // Import global CSS
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Home />);
 
-
+let seconds = 0
 setInterval(() => {
-  root.render(<SecondsCounter seconds={seconds} />);
   seconds++;
-}, 1000);
+  ReactDOM.render(<Home seconds={seconds} />, document.querySelector("#app"));
+})
