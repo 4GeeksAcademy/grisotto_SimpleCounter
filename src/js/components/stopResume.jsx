@@ -1,13 +1,14 @@
+
 import React, { useState, useEffect } from "react";
 
 
-const Home = () => {
+const stopResume = () => {
   const count = 0;
   const [counter, setCounter] = useState(count);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCounter((prevCounter) => prevCounter + 1);
+      setCounter((prevCounter) => prevCounter + );
     }, 1000);
     return () => clearInterval(interval);
   }, []);
@@ -48,4 +49,7 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
 
