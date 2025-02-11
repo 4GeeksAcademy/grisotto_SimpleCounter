@@ -1,48 +1,34 @@
 import React, { useState, useEffect } from "react";
-
+import SecondCounter from "./SecondCounter";
+import CounterControls from "./CounterControls";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
-  const count = 0;
-  const [counter, setCounter] = useState(count);
+  
+  const [counter, setCounter] = useState(0);
+  const [isRunning, setIsrunning] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCounter((prevCounter) => prevCounter + 1);
-    }, 1000);
+    let interval;
+    if (isRunning){
+      interval = setInterval(() => {
+        setCounter((prevCounter) => prevCounter + 1);
+      }, 1000);
+    }
+    
     return () => clearInterval(interval);
-  }, []);
+  }, [isRunning]);
 
-  const calculateSeconds = (aCounter, placeValue) => {
-    return Math.floor(aCounter / placeValue) % 10;
-  };
+
 
   return (
-    <div className="container text-center mt-5 d-flex justify-content-center">
-      
-    <div className="d-flex justify-content-center align-items-center bg-dark text-white p-3 rounded shadow-lg">
-      
-      <div className="p-3 mx-1 border border-white rounded display-4">
-        {<i><i class="fa-regular fa-clock"></i></i>}
-      </div>
-      <div className="p-3 mx-1 border border-white rounded display-4">
-        {calculateSeconds(counter, 100000)}
-      </div>
-      <div className="p-3 mx-1 border border-white rounded display-4">
-        {calculateSeconds(counter, 10000)}
-      </div>
-      <div className="p-3 mx-1 border border-white rounded display-4">
-        {calculateSeconds(counter, 1000)}
-      </div>
-      <div className="p-3 mx-1 border border-white rounded display-4">
-        {calculateSeconds(counter, 100)}
-      </div>
-      <div className="p-3 mx-1 border border-white rounded display-4">
-        {calculateSeconds(counter, 10)}
-      </div>
-      <div className="p-3 mx-1 border border-white rounded display-4">
-        {calculateSeconds(counter, 1)}
-      </div>
-    </div>
+    <div className="container text-center mt-5 d-flex flex-column align-items-center">
+      <SecondCounter counter={counter} /> {/* Passes counter to display */}
+      <CounterControls 
+        isRunning={isRunning} 
+        setIsRunning={setIsrunning} 
+        setCounter={setCounter} 
+      />
     </div>
   );
 };
