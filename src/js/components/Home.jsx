@@ -23,7 +23,7 @@ const Home = () => {
 
   return (
     <div className="container text-center mt-5 d-flex flex-column align-items-center">
-      <SecondCounter counter={counter} /> {/* Passes counter to display */}
+      <SecondCounter counter={counter} /> 
       <CounterControls 
         isRunning={isRunning} 
         setIsRunning={setIsrunning} 
